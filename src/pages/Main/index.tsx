@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import Header from "../../components/Header";
 import MainLayout from "../../components/MainLayout";
 import BigNewsColumn from "../../components/BigNewsColumn"
@@ -111,9 +111,9 @@ const hotNews = [
 ]
 const recentNews = [
     {
-    createDate: new Date('1995-12-17T03:24:00'),
-    title: 'В Сети появился список, где в Минске устанавливают видеокамеры для наблюдения за улицей'
-},
+        createDate: new Date('1995-12-17T03:24:00'),
+        title: 'В Сети появился список, где в Минске устанавливают видеокамеры для наблюдения за улицей'
+    },
     {
         createDate: new Date('1995-12-17T03:24:00'),
         title: 'МИД Беларуси объявил об ответных санкциях в отношении стран Балтии'
@@ -149,8 +149,9 @@ const recentNews = [
 
 ]
 const Main: React.FC<MainProps> = ({}) => {
+    const [selectedTag, setSelectedTag] = useState<string>()
     return (<>
-        <Header/>
+        <Header selectedTagId={selectedTag} setSelectedTagId={setSelectedTag}/>
         <MainLayout>
             <BigNewsColumn items={bigNews}/>
             <SmallNewsColumn title='Горячее'>
